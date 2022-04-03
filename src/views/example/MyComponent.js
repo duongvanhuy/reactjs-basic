@@ -4,13 +4,17 @@ import FormComponent from './FormComponent'
 
 class MyComponent extends React.Component {
     state = {
-
         arrJobs: [
-            { id: 'abcJob1', job: 'teacher', address: 'Hà Nội' },
-            { id: 'abcJob2', job: 'student', address: 'Hà Nội' },
-            { id: 'abcJob3', job: 'doctor', address: 'TP.Hồ Chí Minh' },
+            { id: 'abcJob1', title: 'teacher', salary: '1000' },
+            { id: 'abcJob2', title: 'student', salary: '2000' },
+            { id: 'abcJob3', title: 'doctor', salary: '30000' },
         ]
 
+    }
+    addComponent = (inp) => {
+        this.setState({
+            arrJobs: [...this.state.arrJobs, inp]
+        })
     }
 
 
@@ -18,10 +22,10 @@ class MyComponent extends React.Component {
     render() {
         return (
             <>
-                <FormComponent />
+                <FormComponent
+                    addComponent={this.addComponent}
+                />
                 <ChildComponent
-                    name={'Huy'}
-                    age={'21'}
                     arrJobs={this.state.arrJobs}
                 />
             </>

@@ -21,12 +21,12 @@ class ChildComponent extends React.Component {
                     <div><button onClick={() => this.handleOnClickShow()}>show</button></div>
                     :
                     <>
-                        <div className='job-list'>
+                        <div className='title-list'>
                             {
                                 arrJobs.map((items, index) => {
                                     return (
                                         <div key={items.id}>
-                                            {items.job} -{items.address}
+                                            {items.title} -{items.salary}
                                         </div>
                                     )
 
