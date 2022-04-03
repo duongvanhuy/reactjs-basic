@@ -2,29 +2,46 @@ import React from 'react'
 
 class ChildComponent extends React.Component {
     state = {
+        showJob: false,
     }
 
-
+    handleOnClickShow = () => {
+        this.setState({
+            showJob: !this.state.showJob
+        })
+    }
 
     render() {
-        let { name, age, arrJobs } = this.props
+        let { arrJobs } = this.props
+        let { showJob } = this.state
         return (
             <>
-                <div className='job-list'>
-                    {
-                        arrJobs.map((items, index) => {
+                {showJob === false ?
 
-                            return (
-                                <div key={items.id}>
-                                    {items.job} -{items.address}
-                                </div>
-                            )
+                    <div><button onClick={() => this.handleOnClickShow()}>show</button></div>
 
-                        })
+                    :
+                    <>
+                        <div className='job-list'>
+                            {
+                                arrJobs.map((items, index) => {
+                                    return (
+                                        <div key={items.id}>
+                                            {items.job} -{items.address}
+                                        </div>
+                                    )
 
-                    }
+                                })
 
-                </div>
+                            }
+
+                        </div>
+
+
+
+                        <div><button onClick={() => this.handleOnClickShow()}>hide</button></div>
+                    </>
+                }
             </>
         )
     }
